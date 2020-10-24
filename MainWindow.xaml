@@ -47,21 +47,21 @@
         </GroupBox>
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="131" Margin="17,10,0,0">
             <MenuItem x:Name="fileMenuItem" Header="File">
-                <MenuItem x:Name="exitMenuItem" Header="Exit"/>
+                <MenuItem x:Name="exitMenuItem" Header="Exit" Click="ExitToolStripMenuItem_Click"/>
             </MenuItem>
             <MenuItem x:Name="doughnutsMenuItem" Header="_Doughnuts">
                 <MenuItem x:Name="makeMenuItem" Header="Make">
                     <MenuItem x:Name="raisedMenuItem" Header="Raised">
-                        <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
-                        <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
+                        <MenuItem x:Name="glazedToolStripMenuItem" Header="Glazed" Click="GlazedToolStripMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar" Click="SugarToolStripMenuItem_Click" IsCheckable="True"/>
                     </MenuItem>
                     <MenuItem x:Name="filledMenuItem" Header="Filled">
-                        <MenuItem x:Name="lemonMenuItem" Header="Lemon"/>
-                        <MenuItem x:Name="chocolateMenuItem" Header="Chocolate"/>
-                        <MenuItem x:Name="vanillaMenuItem" Header="Vanilla"/>
+                        <MenuItem x:Name="lemonToolStripMenuItem" Header="Lemon" Click="LemonToolStripMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="chocolateToolStripMenuItem" Header="Chocolate" Click="ChocolateToolStripMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="vanillaToolStripMenuItem" Header="Vanilla" Click="VanillaToolStripMenuItem_Click" IsCheckable="True"/>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem x:Name="stopMenuItem" Header="Stop">
+                <MenuItem x:Name="mnuStop" Header="Stop" Click="StopToolStripMenuItem_Click">
                 </MenuItem>
             </MenuItem>
         </Menu>

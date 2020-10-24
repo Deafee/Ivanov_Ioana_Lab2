@@ -24,5 +24,90 @@ namespace Ivanov_Ioana_Lab2
         {
             InitializeComponent();
         }
+
+        private DoughnutMachine myDoughnutMachine;
+
+        private void FrmMain_Loaded(object sender, RoutedEventArgs e)
+        {
+            myDoughnutMachine = new DoughnutMachine();
+            myDoughnutMachine.DoughnutComplete += new
+            DoughnutMachine.DoughnutCompleteDelegate(DoughnutCompleteHandler);
+        }
+        private int mRaisedGlazed;
+        private int mRaisedSugar;
+        private int mFilledLemon;
+        private int mFilledChocolate;
+        private int mFilledVanilla;
+        private void GlazedToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            glazedToolStripMenuItem.IsChecked = true;
+            sugarToolStripMenuItem.IsChecked = false;
+            myDoughnutMachine.MakeDoughnuts(DoughnutType.Glazed);
+        }
+        private void SugarToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            glazedToolStripMenuItem.IsChecked = false;
+            sugarToolStripMenuItem.IsChecked = true;
+            myDoughnutMachine.MakeDoughnuts(DoughnutType.Sugar);
+        }
+        private void LemonToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            glazedToolStripMenuItem.IsChecked = false;
+            sugarToolStripMenuItem.IsChecked = true;
+            myDoughnutMachine.MakeDoughnuts(DoughnutType.Lemon);
+        }
+        private void ChocolateToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            glazedToolStripMenuItem.IsChecked = false;
+            sugarToolStripMenuItem.IsChecked = true;
+            myDoughnutMachine.MakeDoughnuts(DoughnutType.Chocolate);
+        }
+        private void VanillaToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            glazedToolStripMenuItem.IsChecked = false;
+            sugarToolStripMenuItem.IsChecked = true;
+            myDoughnutMachine.MakeDoughnuts(DoughnutType.Vanilla);
+        }
+        private void StopToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            myDoughnutMachine.Enabled = false;
+        }
+        private void ExitToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void TxtQuantity_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (!(e.Key >= Key.D0 && e.Key <= Key.D9))
+            {
+                MessageBox.Show("Numai cifre se pot introduce!", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void DoughnutCompleteHandler()
+        {
+            switch (myDoughnutMachine.Flavor)
+            {
+                case DoughnutType.Glazed:
+                    mRaisedGlazed++;
+                    txtGlazedRaised.Text = mRaisedGlazed.ToString();
+                    break;
+                case DoughnutType.Sugar:
+                    mRaisedSugar++;
+                    txtSugarRaised.Text = mRaisedSugar.ToString();
+                    break;
+                case DoughnutType.Lemon:
+                    mFilledLemon++;
+                    txtLemonFilled.Text = mFilledLemon.ToString();
+                    break;
+                case DoughnutType.Chocolate:
+                    mFilledChocolate++;
+                    txtChocolateFilled.Text = mFilledChocolate.ToString();
+                    break;
+                case DoughnutType.Vanilla:
+                    mFilledVanilla++;
+                    txtVanillaFilled.Text = mFilledVanilla.ToString();
+                    break;
+            }
+        }
     }
 }
